@@ -1,36 +1,129 @@
-body {
-    background-color: #2a2b2f; 
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; 
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-    font-weight: 300;
-    color: #fff;
-    text-align:center;
-}
 
-.mona-images {
-    max-width: 400px;
-    max-height: 400px;
-    border: 8px solid #fff;
-}
 
-.haiku-containers {
-    padding: 10px 0px 20px 0px;
-}
+using System;
 
-.haikus {
-    font-size: 18px;
-    white-space: pre-wrap;
-}
 
-@media only screen and (max-width: 600px) {
-    .june-images {
-        max-width: 340px;
-        max-height: 340px;
+using System.Collections.Generic;
+
+
+using System.Linq;
+
+
+using System.Text;
+
+
+using System.IO;
+
+
+namespace Assigment5
+
+
+{
+
+
+    class Program
+
+
+    {
+
+
+        static void Main(string[] args)
+        {
+            DateTime y = DateTime.Now;
+            string z = y.ToString();
+            // I wanted to put (z)  ----------------------                  
+            //                                           |
+            //                                         ( here )      buts its giving exception unhandled error and i couldnt find how to solve
+            StreamWriter dosya = new StreamWriter(@"C:\Captain’s log.txt");
+
+
+            do
+
+
+            {
+                string chose = Console.ReadLine();
+                
+
+
+                if (chose == "start")
+                {
+                    DateTime t = DateTime.Now;
+
+                    
+                    dosya.WriteLine("Captain’s log:");
+                    dosya.Write("Date:");
+                    dosya.Write(t);
+                    dosya.WriteLine(" ");
+                    dosya.WriteLine(" ");
+
+                Line:
+                    string x = Console.ReadLine();
+                    
+                    if (x == "stop")
+                    {
+                        dosya.WriteLine(" ");
+                        dosya.WriteLine("Jean - Luc Picard");
+                        break;                        
+                    }
+                    else
+                    {
+                        dosya.WriteLine(x);
+                        goto Line;
+                    }
+        
+                }
+                else if (chose == "stop")
+                {
+                    
+
+                    break;
+                }
+                else
+                {
+                    
+                }
+                   
+            }
+
+            while (true);
+
+                {
+                
+                Console.WriteLine("Saved...");
+                
+                Console.ReadLine();
+                    dosya.Flush();
+
+
+                    dosya.Close();
+
+
+                }
+
+
+            }
+
+
+        }
+
+
     }
 
-    .haikus {
-        font-size: 22px;
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
